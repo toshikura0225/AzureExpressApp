@@ -5,10 +5,10 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function (req, res) {
 
-    const fs = require('fs');
-    let text = "T.K";
-    fs.writeFileSync("output.txt", text);
-    text = fs.readFileSync("output.txt");
+    //const fs = require('fs');
+    let text = "";
+    //fs.writeFileSync("output.txt", text);
+    //text = fs.readFileSync("output.txt");
     //console.log(text);
 
     res.render('index', { title: text });
@@ -22,7 +22,7 @@ router.get ('/favicon.ico', function (req, res) {
     res.end()
 });
 
-var temperature = "";
+var temperature = "(未測定)";
 router.get('/set', function (req, res) {
     if (typeof req.query.temp !== "undefined")
     {

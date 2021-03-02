@@ -11,8 +11,8 @@ var globalParams = {
         "PollingInterval": 1000,
         "PollingTimeout": 800
     },
-    "WebURL_": "https://myfirstwebapp0302.azurewebsites.net",
-    "WebURL": "http://localhost:3000"
+    "WebURL": "https://myfirstwebapp0302.azurewebsites.net",
+    "WebURL_": "http://localhost:3000"
 };
 
 var logger = {
