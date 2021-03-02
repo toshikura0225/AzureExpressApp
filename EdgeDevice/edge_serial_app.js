@@ -10,7 +10,9 @@ var globalParams = {
     "Base": {
         "PollingInterval": 1000,
         "PollingTimeout": 800
-    }
+    },
+    "WebURL_": "https://myfirstwebapp0302.azurewebsites.net",
+    "WebURL": "http://localhost:3000"
 };
 
 var logger = {
@@ -283,21 +285,24 @@ function main() {
 
     }, globalParams.Base.PollingInterval);
 
-    temperature = "";
-
+    var temperature = "";
     setInterval(() => {
+        if (docs.length > 1) {
+            let m1 = docs[docs.length - 1].M1;
+            temperature = `${String.fromCharCode(m1[7])}${String.fromCharCode(m1[8])}${String.fromCharCode(m1[9])}${String.fromCharCode(m1[10])}`;
 
-        request(`https://myfirstwebapp0302.azurewebsites.net/set/temp=${temperature}`, (error, response, body) => {
-          // エラーチェック
-          if( error !== null ){
-            console.error('error:', error);
-            return(false);
-          }
-        
-          // レスポンスコードとHTMLを表示
-          console.log('statusCode:', response && response.statusCode);
-          console.log('body:', body);
-        });
+            request(`${globalParams.WebURL}/set?temp=${temperature}`, (error, response, body) => {
+                // エラーチェック
+                if( error !== null ){
+                    console.error('error:', error);
+                    return(false);
+                }
+                
+            });
+            
+            // レスポンスコードとHTMLを表示
+            console.log('temperature:', temperature);
+        }
 
     }, 1000);
 

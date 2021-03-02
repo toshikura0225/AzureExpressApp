@@ -18,7 +18,11 @@ router.get('/temperature', function (req, res) {
     res.send(temperature);
 });
 
-var temperature = null;
+router.get ('/favicon.ico', function (req, res) {
+    res.end()
+});
+
+var temperature = "";
 router.get('/set', function (req, res) {
     if (typeof req.query.temp !== "undefined")
     {
@@ -27,9 +31,5 @@ router.get('/set', function (req, res) {
     res.send("OK");
 });
 
-setInterval(() => {
-
-
-}, 1000);
 
 module.exports = router;
