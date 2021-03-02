@@ -14,4 +14,10 @@ router.get('/', function (req, res) {
     res.render('index', { title: text });
 });
 
+router.get('/temperature', function (req, res) {
+    var dt = new Date();
+    res.send(dt.getSeconds().toString());
+});
+
+
 module.exports = router;
